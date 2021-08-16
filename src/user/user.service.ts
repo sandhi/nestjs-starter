@@ -24,8 +24,7 @@ export class UserService {
   }
 
   findAll() {
-    const result = this.userRepository.find();
-    return result;
+    return this.userRepository.find();
   }
 
   async findOne(id: number) {

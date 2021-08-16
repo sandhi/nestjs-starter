@@ -31,6 +31,7 @@ export class UserController {
 
   @Get()
   @Roles(Role.Admin)
+  @UseInterceptors(ClassSerializerInterceptor)
   findAll() {
     return this.userService.findAll();
   }
@@ -48,9 +49,7 @@ export class UserController {
 
     if (!result) throw new NotFoundException();
 
-    return new User({
-      username: result.username,
-    });
+    return result;
   }
 
   @Patch(':id')
